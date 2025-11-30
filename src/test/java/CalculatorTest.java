@@ -38,7 +38,7 @@ class CalculatorTest {
     @Test
     void solver() {
 //        (x + 5) * 2 − (18 / 3) при x = 3
-//        (3 + 5) * 2
+//        (3 + 5) * 2 - (18 / 3) = 10
         assertEquals(10,calculator.solver());
     }
 }
