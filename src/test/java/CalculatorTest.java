@@ -3,6 +3,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class CalculatorTest {
+    Calculator calculator = new Calculator();
 
     Calculator calculator = new Calculator();
     @Test
@@ -37,8 +38,8 @@ class CalculatorTest {
 
     @Test
     void solver() {
-        // ((x - 2) * (y + 3) + 10) / 4
-        // при x = 8, y = 4
-        assertEquals(13, calculator.solver());
+//        (x + 5) * 2 − (18 / 3) при x = 3
+//        (3 + 5) * 2 - (18 / 3) = 10
+        assertEquals(10,calculator.solver());
     }
 }

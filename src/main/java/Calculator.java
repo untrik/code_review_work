@@ -7,30 +7,20 @@ public class Calculator {
     }
     public int div(int a, int b){
         if (b == 0){
-            throw new IllegalArgumentException("на нолик делить нельзя");
+            throw new IllegalArgumentException("the divisor cannot be equal to 0"); // кидаем Exception если делитель равен 0 (деление на 0 неопределено)
         }
-        return a / b;
+        return a/b;
     }
     public int times(int a, int b){
         return a * b;
     }
-    public int solver() {
-
-        // ((x - 2) * (y + 3) + 10) / 4
-        // при x = 8, y = 4
-
-        int x = 8;
-        int y = 4;
-
-        int xMinus2 = dif(x, 2);        // 8 - 2 = 6
-        int yPlus3 = add(y, 3);         // 4 + 3 = 7
-
-        int mult = times(xMinus2, yPlus3); // 6 * 7 = 42
-
-        int sum = add(mult, 10);        // 42 + 10 = 52
-
-        int res = div(sum, 4);          // 52 / 4 = 13
-
+    public int solver(){
+//        (x + 5) * 2 − (18 / 3)
+        int x = 3;
+        int part1 = add(x,5); // x + 5 = 8 при x = 3
+        int part2 = div(18,3); // 18 / 3 = 6
+        int mult = times(part1,2); // 8 * 2 = 16
+        int res = dif(mult,part2); //  16 - 6 = 10
         return res;
     }
 
