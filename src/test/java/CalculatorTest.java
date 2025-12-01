@@ -4,28 +4,41 @@ import static org.junit.jupiter.api.Assertions.*;
 
 class CalculatorTest {
 
+    Calculator calculator = new Calculator();
     @Test
     void add() {
-        //TODO inser your realisation in test-method add
+        assertEquals(2, calculator.add(1, 1));
+        assertEquals(-8, calculator.add(-5, -3));
+        assertEquals(7, calculator.add(10, -3));
     }
 
     @Test
     void dif() {
-        //TODO inser your realisation in test-method dif
+        assertEquals(13, calculator.dif(10, -3));
+        assertEquals(5, calculator.dif(10, 5));
+        assertEquals(-5, calculator.dif(5, 10));
     }
 
     @Test
     void div() {
-        //TODO inser your realisation in test-method div
+        assertEquals(2, calculator.div(10, 5));
+        assertEquals(-2, calculator.div(-10, 5));
+        assertEquals(2, calculator.div(-10, -5));
+        assertThrows(IllegalArgumentException.class, () -> calculator.div(10, 0));
     }
 
     @Test
     void times() {
-        //TODO inser your realisation in test-method times
+        assertEquals(50, calculator.times(-10, -5));
+        assertEquals(-50, calculator.times(10, -5));
+        assertEquals(50, calculator.times(10, 5));
+        assertEquals(0, calculator.times(0, 5));
     }
 
     @Test
     void solver() {
-        //TODO inser your realisation in test-method solver
+        // ((x - 2) * (y + 3) + 10) / 4
+        // при x = 8, y = 4
+        assertEquals(13, calculator.solver());
     }
 }
