@@ -23,4 +23,5 @@ public class Calculator {
         int res = dif(mult,part2); //  16 - 6 = 10
         return res;
     }
+
 }
