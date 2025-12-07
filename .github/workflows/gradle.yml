@@ -6,8 +6,8 @@ on:
   pull_request:
     branches: [ "main" ]
   schedule:
-    - cron: "30 12 * * 3"  # среда 12:30
-    - cron: "0 22 * * 5"   # пятница 22:00
+    - cron: "30 12 * * 3"  # каждая среда в 12:30
+    - cron: "0 22 * * 5"   # каждая пятница в 22:00
 
 jobs:
   build:
@@ -17,8 +17,6 @@ jobs:
         java: [11, 13, 17]
 
     runs-on: ${{ matrix.os }}
-    permissions:
-      contents: read
 
     steps:
       - name: Checkout repository
@@ -30,29 +28,7 @@ jobs:
           java-version: ${{ matrix.java }}
           distribution: 'zulu'
 
-      - name: Setup Gradle
-        uses: gradle/actions/setup-gradle@af1da67850ed9a4cedd57bfd976089dd991e2582 # v4.0.0
-
-      - name: Grant execute permission for gradlew
-        run: chmod +x gradlew
-
-      - name: Build with Gradle Wrapper
-        run: ./gradlew build
-
-  dependency-submission:
-    runs-on: ubuntu-latest
-    permissions:
-      contents: write
-
-    steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      - name: Set up JDK 17
-        uses: actions/setup-java@v4
+      - name: Build with Gradle
+        uses: gradle/gradle-build-action@v3
         with:
-          java-version: '17'
-          distribution: 'zulu'
-
-      - name: Generate and submit dependency graph
-        uses: gradle/actions/dependency-submission@af1da67850ed9a4cedd57bfd976089dd991e2582 # v4.0.0
+          arguments: build
