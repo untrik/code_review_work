@@ -26,9 +26,13 @@ jobs:
         uses: actions/setup-java@v4
         with:
           java-version: ${{ matrix.java }}
+          # zulu нужен, чтобы была доступна Java 13
           distribution: 'zulu'
 
-      - name: Build with Gradle
-        uses: gradle/gradle-build-action@v3
-        with:
-          arguments: build
+      - name: Make gradlew executable
+        run: chmod +x gradlew
+        shell: bash
+
+      - name: Build with Gradle Wrapper
+        run: ./gradlew build
+        shell: bash
